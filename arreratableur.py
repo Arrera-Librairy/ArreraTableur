@@ -49,3 +49,13 @@ class CArreraTableur:
 
     def maximun(self, caseDestination: str, case1: str, case2: str):
         self.__table[caseDestination] = "=MAX(" + case1 + ":" + case2 + ")"
+
+    def getColone(self,decalageLigne:int,nbColone:int):
+        dictOut = {}
+        i = 1
+        for row in range(decalageLigne, self.__table.max_row + 1):
+            for col in range(1, nbColone + 1):
+                cell_position = f"{self.__table.cell(row=row, column=col).coordinate}"
+                dictOut[cell_position] = self.__table.cell(row=row, column=col).value
+            i = i + 1
+        return dictOut
